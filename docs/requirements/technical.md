@@ -4,6 +4,7 @@
 
 - Мова — Python 3.14, версія фіксується у venv (`.venv` у корені проєкту).
 - Інструменти: venv, Ruff (лінтер і форматер), Pylance / Pyright у режимі strict.
+- GUI — tkinter.
 - Залежності розробки фіксуються в `requirements-dev.txt`, налаштування інструментів — у `pyproject.toml`.
 
 ## Алгоритми
@@ -37,5 +38,4 @@ cleaned_data = clean_data(raw_data)
 
 ## Відкриті питання
 
-- GUI-бібліотека (вирішується на етапі дизайну; перевірити підтримку Python 3.14).
 - Фреймворк тестування (pytest чи unittest).
