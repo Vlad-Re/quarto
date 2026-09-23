@@ -1,19 +1,25 @@
+' made with AI
 @startuml components
-title Quarto v1.0 — компоненти
+title Quarto v1.0 — components
 
-package "Оболонка (imperative shell)" {
-  component "Вікно (tkinter)" as View
-  component "Презентер" as Presenter
+package "Imperative shell" {
+  component "View (tkinter)" as View
+  component "Presenter" as Presenter
 }
 
-package "Ядро (functional core)" {
-  component "Бот" as Bot
-  component "Модель" as Model
+package "Functional core" {
+  component "Bot" as Bot {
+    component "Search algorithms\n(random, greedy, minimax)" as Search
+    component "Evaluation function" as Eval
+  }
+  component "Model" as Model
 }
 
-View --> Presenter : кліки, reset
-Presenter --> View : що показати
-Presenter --> Bot : стан гри
-Presenter --> Model : ходи
-Bot --> Model : правила
+View --> Presenter : clicks, reset
+Presenter --> View : what to show
+Presenter --> Search : game state
+Presenter --> Model : moves
+Search --> Eval : score position
+Search --> Model : rules (simulation)
+Eval --> Model : reads state
 @enduml
