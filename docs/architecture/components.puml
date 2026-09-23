@@ -1,0 +1,19 @@
+@startuml components
+title Quarto v1.0 — компоненти
+
+package "Оболонка (imperative shell)" {
+  component "Вікно (tkinter)" as View
+  component "Презентер" as Presenter
+}
+
+package "Ядро (functional core)" {
+  component "Бот" as Bot
+  component "Модель" as Model
+}
+
+View --> Presenter : кліки, reset
+Presenter --> View : що показати
+Presenter --> Bot : стан гри
+Presenter --> Model : ходи
+Bot --> Model : правила
+@enduml

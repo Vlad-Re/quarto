@@ -1,0 +1,32 @@
+@startuml turn-sequence
+title Quarto v1.0 — хід гравця і відповідь бота
+
+actor Гравець
+participant "Вікно" as View
+participant "Презентер" as Presenter
+participant "Модель" as Model
+participant "Бот" as Bot
+
+Гравець -> View : клік по клітинці
+View -> Presenter : клітинка обрана
+Presenter -> Model : поставити поточну фігуру
+Model --> Presenter : новий стан
+Presenter -> View : показати стан
+
+Гравець -> View : клік по фігурі
+View -> Presenter : фігура обрана
+Presenter -> View : показати рамку
+
+Гравець -> View : повторний клік по тій самій фігурі
+View -> Presenter : фігура обрана
+Presenter -> Model : віддати фігуру боту
+Model --> Presenter : новий стан
+Presenter -> View : статус «Bot's turn»
+
+Presenter -> Bot : стан гри
+Bot --> Presenter : клітинка + фігура для гравця
+Presenter -> Presenter : витримати BOT_MOVE_DELAY
+Presenter -> Model : поставити фігуру, віддати фігуру
+Model --> Presenter : новий стан
+Presenter -> View : показати стан, «Player's turn»
+@enduml
