@@ -1,32 +1,33 @@
 @startuml turn-sequence
-title Quarto v1.0 — хід гравця і відповідь бота
+title Quarto v1.0 — player turn and bot reply
 
-actor Гравець
-participant "Вікно" as View
-participant "Презентер" as Presenter
-participant "Модель" as Model
-participant "Бот" as Bot
+actor Player
+participant "View" as View
+participant "Presenter" as Presenter
+participant "Model" as Model
+participant "Bot" as Bot
 
-Гравець -> View : клік по клітинці
-View -> Presenter : клітинка обрана
-Presenter -> Model : поставити поточну фігуру
-Model --> Presenter : новий стан
-Presenter -> View : показати стан
+Player -> View : click empty cell
+View -> Presenter : cell clicked
+Presenter -> Model : place(state, cell)
+Model --> Presenter : new state
+Presenter -> View : show state
 
-Гравець -> View : клік по фігурі
-View -> Presenter : фігура обрана
-Presenter -> View : показати рамку
+Player -> View : click piece
+View -> Presenter : piece clicked
+Presenter -> View : show frame
 
-Гравець -> View : повторний клік по тій самій фігурі
-View -> Presenter : фігура обрана
-Presenter -> Model : віддати фігуру боту
-Model --> Presenter : новий стан
-Presenter -> View : статус «Bot's turn»
+Player -> View : click same piece again
+View -> Presenter : piece clicked
+Presenter -> Model : give(state, piece)
+Model --> Presenter : new state
+Presenter -> View : status "Bot's turn"
 
-Presenter -> Bot : стан гри
-Bot --> Presenter : клітинка + фігура для гравця
-Presenter -> Presenter : витримати BOT_MOVE_DELAY
-Presenter -> Model : поставити фігуру, віддати фігуру
-Model --> Presenter : новий стан
-Presenter -> View : показати стан, «Player's turn»
+Presenter -> Bot : bot(state)
+Bot --> Presenter : Move(cell, piece)
+Presenter -> View : schedule(BOT_MOVE_DELAY)
+View --> Presenter : timer fired
+Presenter -> Model : place, then give
+Model --> Presenter : new state
+Presenter -> View : show state, "Player's turn"
 @enduml

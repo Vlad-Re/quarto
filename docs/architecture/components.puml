@@ -20,6 +20,6 @@ Presenter --> View : what to show
 Presenter --> Search : game state
 Presenter --> Model : moves
 Search --> Eval : score position
-Search --> Model : rules (simulation)
-Eval --> Model : reads state
+Search --> Model : calls place / give / outcome
+Eval --> Model : reads board and lines
 @enduml
