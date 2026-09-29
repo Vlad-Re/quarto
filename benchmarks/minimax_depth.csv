@@ -1,0 +1,13 @@
+position,depth_half_actions,seconds
+bot move 1,2,0.0013
+bot move 1,3,0.0176
+bot move 1,4,0.2031
+bot move 1,5,2.6598
+bot move 1,6,32.6977
+bot move 1,7,415.6486
+bot move 2,2,0.0013
+bot move 2,3,0.0122
+bot move 2,4,0.1390
+bot move 2,5,1.3826
+bot move 2,6,13.2189
+bot move 2,7,127.0741
