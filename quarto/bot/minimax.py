@@ -1,6 +1,7 @@
 """Draft minimax. Depth unit = half-action (one place or one give). No pruning yet."""
 
 from quarto.bot.evaluation import evaluate
+from quarto.config import MINIMAX_DEPTH
 from quarto.model import (
     Action,
     GameState,
@@ -13,9 +14,6 @@ from quarto.model import (
     place,
     sorted_available,
 )
-
-# should stay under 3.5 s
-MINIMAX_DEPTH = 4
 
 
 def minimax_bot(state: GameState) -> Move:

@@ -1,9 +1,9 @@
 """Score shared by greedy and minimax"""
 
+from quarto.config import THREAT_SCORE
 from quarto.model import LINES, Board, Draw, GameState, Line, Side, Win, outcome, shares_attribute
 
 WIN_SCORE = 1000
-THREAT_SCORE = 7  # max: 10 lines * 7 = 70. below WIN_SCORE
 
 
 def evaluate(state: GameState, side: Side) -> int:

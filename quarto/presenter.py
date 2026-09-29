@@ -7,6 +7,7 @@ from quarto.bot import Bot
 from quarto.bot.greedy import greedy_bot
 from quarto.bot.minimax import minimax_bot
 from quarto.bot.random_bot import random_bot
+from quarto.config import BOT_MOVE_DELAY, BOT_NAME
 from quarto.model import (
     ALL_PIECES,
     Action,
@@ -29,8 +30,7 @@ BOTS: dict[str, Bot] = {
     "greedy": greedy_bot,
     "minimax": minimax_bot,
 }
-BOT: Bot = BOTS["greedy"]
-BOT_MOVE_DELAY = 800  # ms
+BOT: Bot = BOTS[BOT_NAME]
 
 BOT_SIDE = Side.FIRST  # gives piece
 PLAYER_SIDE = Side.SECOND  # places
