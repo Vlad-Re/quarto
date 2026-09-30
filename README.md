@@ -45,6 +45,12 @@ pyright
 
 Pyright читає налаштування з `pyproject.toml` і сам знаходить `.venv`.
 
+# Бенчмарк
+```
+python -m tools.bench_depth
+python -m tools.bench_depth --limit 10
+```
+
 ## Перед комітом
 
 ```
