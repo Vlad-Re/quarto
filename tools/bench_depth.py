@@ -63,7 +63,7 @@ def run(limit_s: float) -> dict[str, list[tuple[int, float]]]:
 
 def save(results: dict[str, list[tuple[int, float]]]) -> None:
     OUT_DIR.mkdir(exist_ok=True)
-    csv_path = OUT_DIR / "minimax_depth.csv"
+    csv_path = OUT_DIR / "alpha_beta_depth.csv"
     with csv_path.open("w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(["position", "depth_half_actions", "seconds"])
@@ -83,10 +83,10 @@ def save(results: dict[str, list[tuple[int, float]]]) -> None:
     axes.set_yscale("log")
     axes.set_xlabel("depth, half-actions")
     axes.set_ylabel("time per move, s (log scale)")
-    axes.set_title("Minimax (no pruning, eval = 0): time vs depth")
+    axes.set_title("Minimax (alpha-beta, threat eval): time vs depth")
     axes.grid(True, which="both", alpha=0.3)
     axes.legend()
-    png_path = OUT_DIR / "minimax_depth.png"
+    png_path = OUT_DIR / "alpha_beta_depth.png"
     figure.savefig(png_path, dpi=120, bbox_inches="tight")
     print(f"saved {csv_path} and {png_path}")
 
