@@ -107,7 +107,7 @@ class QuartoView(tk.Frame):
         if messagebox.askyesno("Reset", "Start a new game?", parent=self):
             self._on_reset()
 
-    def _clicked(self, event: "tk.Event[tk.Canvas]") -> None:
+    def _clicked(self, event: tk.Event[tk.Canvas]) -> None:
         screen = self._screen
         if screen is None:
             return
@@ -125,13 +125,13 @@ class QuartoView(tk.Frame):
             case InputMode.NONE:
                 pass
 
-    def _moved(self, event: "tk.Event[tk.Canvas]") -> None:
+    def _moved(self, event: tk.Event[tk.Canvas]) -> None:
         cell = _cell_at(event.x, event.y)
         if cell != self._hover:
             self._hover = cell
             self._redraw()
 
-    def _left(self, _event: "tk.Event[tk.Canvas]") -> None:
+    def _left(self, _event: tk.Event[tk.Canvas]) -> None:
         if self._hover is not None:
             self._hover = None
             self._redraw()
